@@ -3,7 +3,7 @@
 -behaviour(gen_server).
 
 %% API
--export([start_link/0, twit/2, follow/2]).
+-export([start_link/0, twit/2, follow/2, follow/1]).
 
 %% gen_server callbacks
 -export([init/1, handle_call/3, handle_cast/2, handle_info/2,
@@ -39,6 +39,9 @@ twit(Name, Msg) ->
       Name :: string().
 follow(Name, Node) ->
     gen_server:cast({?SERVER, Node}, {follow, {Name, self()}}).
+
+follow(Name) ->
+    follow(Name, node()).
 
 %%%===================================================================
 %%% gen_server callbacks
