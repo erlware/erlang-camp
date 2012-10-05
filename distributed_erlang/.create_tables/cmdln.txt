@@ -1,0 +1,6 @@
+mnesia:start().
+create_tables:init_tables().
+create_tables:insert_project("catcher in the rye", "a really intesting book").
+create_tables:insert_project("enders game", "great scifi story").             
+create_tables:insert_member(1, martinjlogan, ["catcher in the rye", "enders game"]).
+tv:start().
