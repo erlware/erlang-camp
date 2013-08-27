@@ -1,5 +1,5 @@
 -module(server).
--export([start/0, store/2]).
+-export([start/0, lookup/1, store/2]).
 
 %%% API
 
@@ -8,6 +8,14 @@ start() ->
 
 store(Key, Value) ->
     server ! {store, {Key, Value}}.
+
+lookup(Key) ->
+    server ! {lookup, {Key, self()}},
+    receive
+	Msg ->
+	    {ok, Msg}
+    end.
+
 
 %%% Internal Functions
 
@@ -18,6 +26,8 @@ init() ->
 
 loop(State) ->
     receive
+	{lookup, {_Key, From}} ->
+	    From ! State;
 	{store, {Key, Value}} ->
 	    io:format("storing ~p~n", [Key]),
 	    loop([{Key, Value}|State])
