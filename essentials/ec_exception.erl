@@ -1,6 +1,6 @@
 %%% @doc Bunch of different exception scenerios 
 
--module(exceptional).
+-module(ec_exception).
 -export([try_of_fail1/0]).
 
 try_of_fail1() ->
