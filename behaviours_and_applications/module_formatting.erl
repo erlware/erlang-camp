@@ -1,11 +1,6 @@
-%%%-------------------------------------------------------------------
 %%% @author Martin Logan <martinjlogan@erlware.org>
 %%% @copyright (C) 2012, Erlware
-%%% @doc
-%%%  A simple module for demonstrating how to setup a module
-%%% @end
-%%% Created : 22 Sep 2012 by Martin Logan <martinjlogan@Martins-MacBook-Air.local>
-%%%-------------------------------------------------------------------
+%%% @doc A module demonstrating how to format and layout a module.
 -module(module_formatting).
 
 -export([start/0, init/1]).
