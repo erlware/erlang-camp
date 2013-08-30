@@ -20,8 +20,8 @@ lookup(Key) ->
 init() ->
     {ok, []}.
 
-handle_msg({lookup, {_Key, From}}, State) ->
-    From ! State,
+handle_msg({lookup, {Key, From}}, State) ->
+    From ! proplists:get_value(Key, State),
     {ok, State};
 handle_msg({store, {Key, Value}}, State) ->
     io:format("storing ~p~n", [Key]),
