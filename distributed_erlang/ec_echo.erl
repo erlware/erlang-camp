@@ -3,6 +3,14 @@
 %%% @copyright (C) 2013, Martin Logan
 %%% @doc
 %%%   this is a simple echo server
+%%%   Directions:
+%%%   Setup and connect 4 nodes a, b, c and d.
+%%%   on b, c and d run ec_echo:start_link()
+%%%   on a run lists:foreach(
+%%%                     fun(Node) -> 
+%%%                         io:format("got ~p~n", [ec_echo:send_sync(Node, "msg to echo")]) 
+%%%                     end, 
+%%%                     nodes()).
 %%% @end
 %%% Created : 31 Aug 2013 by Martin Logan <martinjlogan@Martins-MacBook-Air.local>
 %%%-------------------------------------------------------
