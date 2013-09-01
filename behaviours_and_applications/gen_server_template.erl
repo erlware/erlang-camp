@@ -12,6 +12,7 @@
 	 terminate/2, code_change/3]).
 
 -define(SERVER, ?MODULE). 
+-define(IMPLEMENTATION_MODULE, ?MODULE).
 
 %%%===================================================================
 %%% API
@@ -20,7 +21,7 @@
 %% @doc Starts the server
 -spec start_link() -> {ok, pid()}.
 start_link() ->
-    gen_server:start_link({local, ?SERVER}, ?MODULE, [], []).
+    gen_server:start_link({local, ?SERVER}, ?IMPLEMENTATION_MODULE, [], []).
 
 %%%===================================================================
 %%% gen_server callbacks
