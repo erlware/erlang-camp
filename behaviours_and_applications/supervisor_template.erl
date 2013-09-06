@@ -1,6 +1,7 @@
 %%% @author You 
 %%% @copyright (C) 2013, Erlware
 %%% @doc
+
 -module(supervisor_template).
 -behaviour(supervisor).
 
@@ -13,32 +14,22 @@
 -define(SERVER, ?MODULE).
 -define(IMPLEMENTATION_MODULE, ?MODULE).
 
-%%%===================================================================
-%%% API functions
-%%%===================================================================
+%%%======================================================================
+%%% API
+%%%======================================================================
 
 %% @doc Starts the supervisor.
 -spec start_link() -> {ok, pid()} | ignore | {error, term()}
 start_link() ->
     supervisor:start_link({local, ?SERVER}, ?IMPLEMENTATION_MODULE, []).
 
-%%%===================================================================
-%%% Supervisor callbacks
-%%%===================================================================
 
-%%--------------------------------------------------------------------
-%% @private
-%% @doc
-%% Whenever a supervisor is started using supervisor:start_link/[2,3],
-%% this function is called by the new process to find out about
-%% restart strategy, maximum restart frequency and child
-%% specifications.
-%%
-%% @spec init(Args) -> {ok, {SupFlags, [ChildSpec]}} |
-%%                     ignore |
-%%                     {error, Reason}
-%% @end
-%%--------------------------------------------------------------------
+%%%======================================================================
+%%% Behaviour Callback Functions
+%%%======================================================================
+-spec init(Args::list()) -> {ok, {SupFlags, [ChildSpec]}} |
+                     ignore |
+					 {error, Reason::term()}.
 init([]) ->
     RestartStrategy = one_for_one,
     MaxRestarts = 1000,
@@ -50,7 +41,7 @@ init([]) ->
     Shutdown = 2000,
     Type = worker,
 
-    AChild = {<module_name>, {module_name, start_link, []},
+    AChild = {module_name, {module_name, start_link, []},
 	      Restart, Shutdown, Type, [module_name]},
 
     {ok, {SupFlags, [AChild]}}.
