@@ -12,13 +12,12 @@ store(Key, Value) ->
 lookup(Key) ->
     server ! {<fixme>, {Key, self()}},
     receive
-		Msg ->
-	    	{ok, Msg}
+        Msg ->
+            {ok, Msg}
     end.
 
 
 %%% Internal Functions
-
 init() ->
     register(server, self()),
     io:format("starting~n"),
@@ -26,11 +25,10 @@ init() ->
 
 loop(State) ->
     receive
-	{lookup, {<fixme>, From}} ->
-	    From ! proplists:get_value(Key, State),
-		%% <fixme>
-	{store, {Key, Value}} ->
-	    io:format("storing ~p~n", [Key]),
-	    loop([{Key, Value}|State])
+        {lookup, {<fixme>, From}} ->
+            From ! proplists:get_value(Key, State),
+                %% <fixme>
+        {store, {Key, Value}} ->
+            io:format("storing ~p~n", [Key]),
+            loop([{Key, Value}|State])
     end.
-	    

@@ -14,7 +14,7 @@ lookup(Key) ->
     receive
         Msg -> {ok, Msg}
     end.
-    
+
 
 %%% Internal Functions
 init() ->

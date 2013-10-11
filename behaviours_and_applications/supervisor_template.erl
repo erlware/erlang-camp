@@ -1,4 +1,4 @@
-%%% @author You 
+%%% @author You
 %%% @copyright (C) 2013, Erlware
 %%% @doc
 
@@ -27,9 +27,6 @@ start_link() ->
 %%%======================================================================
 %%% Behaviour Callback Functions
 %%%======================================================================
--spec init(Args::list()) -> {ok, {SupFlags, [ChildSpec]}} |
-                     ignore |
-					 {error, Reason::term()}.
 init([]) ->
     RestartStrategy = one_for_one,
     MaxRestarts = 1000,
@@ -42,7 +39,7 @@ init([]) ->
     Type = worker,
 
     AChild = {module_name, {module_name, start_link, []},
-	      Restart, Shutdown, Type, [module_name]},
+              Restart, Shutdown, Type, [module_name]},
 
     {ok, {SupFlags, [AChild]}}.
 
