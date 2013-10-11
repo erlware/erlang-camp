@@ -8,16 +8,16 @@
          code_change/3,
          terminate/2]).
 
-init({X, Y, Width, Height, Rotation}) ->
-  {ok, {X, Y, Width, Height, Rotation}}.
+init({X, Y}) ->
+  {ok, {X, Y}}.
 
-handle_event({change, {x, NewX}}, {OldX, OldY, W, H, Rotation}) ->
+handle_event({change, {x, NewX}}, {OldX, OldY}) ->
     io:format("Entity moved from (~p, ~p) to (~p, ~p).~n", [OldX, OldY, NewX, OldY]),
-    {ok, {NewX, OldY, W, H, Rotation}};
+    {ok, {NewX, OldY}};
 
-handle_event({change, {y, NewY}}, {OldX, OldY, W, H, Rotation}) ->
+handle_event({change, {y, NewY}}, {OldX, OldY}) ->
     io:format("Entity moved from (~p, ~p) to (~p, ~p).~n", [OldX, OldY, OldX, NewY]),
-    {ok, {OldX, NewY, W, H, Rotation}};
+    {ok, {OldX, NewY}};
 
 %% Update coordinates for both x and y
 %%handle_event({change, {{x, y}, {NewX, NewY}}}, ??) ->

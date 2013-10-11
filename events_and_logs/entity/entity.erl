@@ -1,14 +1,13 @@
 -module (entity).
--export ([init/0,
+-export ([start_link/0,
           add_component/3,
           remove_component/2,
           components/1,
           notify/2,
           destroy/1]).
 
-init() ->
-    {ok, Pid} = gen_event:start_link(),
-    {ok, Pid}.
+start_link() ->
+    gen_event:start_link().
 
 add_component(Pid, Component, Args) ->
     gen_event:add_handler(Pid, Component, Args).
