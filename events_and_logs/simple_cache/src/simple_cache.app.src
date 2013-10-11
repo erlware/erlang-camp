@@ -1,0 +1,12 @@
+{application, simple_cache,
+ [
+  {description, ""},
+  {vsn, "1"},
+  {registered, []},
+  {applications, [
+                  kernel,
+                  stdlib
+                 ]},
+  {mod, { sc_app, []}},
+  {env, []}
+ ]}.
