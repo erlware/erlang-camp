@@ -1,4 +1,4 @@
--module (entity).
+-module (em).
 -export ([start_link/0,
           add_component/3,
           remove_component/2,
