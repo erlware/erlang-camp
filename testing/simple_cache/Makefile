@@ -62,7 +62,7 @@ $(DEPS_PLT):
 	@echo "Building local plt"
 	@echo
 	dialyzer --output_plt $(DEPS_PLT) --build_plt \
-	   --apps erts sasl kernel stdlib 
+	   --apps erts sasl kernel stdlib
 
 dialyzer: $(DEPS_PLT)
 	dialyzer --plt $(DEPS_PLT) --fullpath -Wrace_conditions \
@@ -71,7 +71,7 @@ dialyzer: $(DEPS_PLT)
 typer:
 	typer --plt $(DEPS_PLT) -r ./src
 
-shell: get-deps compile
+shell: compile
 # You often want *rebuilt* rebar tests to be available to the
 # shell you have to call eunit (to get the tests
 # rebuilt). However, eunit runs the tests, which probably

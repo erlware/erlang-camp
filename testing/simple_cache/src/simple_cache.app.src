@@ -3,6 +3,6 @@
   {vsn, "0.1.0"},
   {modules, []},
   {registered, [sc_sup]},
-  {applications, [kernel, sasl, stdlib]},
+  {applications, [kernel, stdlib]},
   {mod, {sc_app, []}}
  ]}.

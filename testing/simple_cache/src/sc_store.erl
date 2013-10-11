@@ -7,13 +7,13 @@
          lookup/2
         ]).
 init() ->
-    dict:new()
+    dict:new().
 
-insert(Store, Key, Pid) ->
-    dict:store(Dict, {Key, Pid}).
+insert(Store, Key, Value) ->
+    dict:store(Key, Value, Store).
 
 lookup(Store, Key) ->
-    dict:find(Dict, Key).
+    dict:find(Key, Store).
 
-delete(Pid) ->
-    dict:erase(?TABLE_ID, {'_', Pid}).
+delete(Store, Key) ->
+    dict:erase(Key, Store).
