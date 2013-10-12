@@ -11,14 +11,24 @@
 init(WeaponsList) ->
     {ok, WeaponsList}.
 
-handle_event({add_weapon, ??}, ??) ->
+handle_event({add_weapon, Weapon}, WeaponsList) ->
+    io:format("Adding weapon ~p to arsenal~n", [Weapon]),
+    {ok, [Weapon | WeaponsList]};
 
-handle_event({remove_weapon, ??}, ??) ->
+handle_event({remove_weapon, Weapon}, WeaponsList) ->
+    io:format("Removing weapon ~p from arsenal~n", [Weapon]),
+    {ok, lists:delete(Weapon, WeaponsList)};
 
-handle_event({list_weapons}, ??) ->
+handle_event(list_weapons, WeaponsList) ->
+    io:format("Current weapons: ~p~n", [WeaponsList]),
+    {ok, WeaponsList};
 
-%% Add "WMD" to list of weapons when x is 489, and y is 937
-%%handle_event({change, {{x, y}, {NewX, NewY}}}, ??) ->
+%% Add "WMD" to list of weapons when x is 489, and y is 937 (hint: use guards)
+handle_event({change, {{x, y}, {NewX, NewY}}}, WeaponsList)
+  when NewX =:= 489 andalso
+       NewY =:= 937 ->
+    io:format("Found Secret! Adding weapon ~p to arsenal~n", ["WMD"]),
+    {ok, ["WMD" | WeaponsList]};
 
 handle_event(_, State) ->
     {ok, State}.

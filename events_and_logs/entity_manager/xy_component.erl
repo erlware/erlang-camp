@@ -20,7 +20,9 @@ handle_event({change, {y, NewY}}, {OldX, OldY}) ->
     {ok, {OldX, NewY}};
 
 %% Update coordinates for both x and y
-%%handle_event({change, {{x, y}, {NewX, NewY}}}, ??) ->
+handle_event({change, {{x, y}, {NewX, NewY}}}, {OldX, OldY}) ->
+    io:format("Entity moved from (~p, ~p) to (~p, ~p).~n", [OldX, OldY, NewX, NewY]),
+    {ok, {NewX, NewY}};
 
 handle_event(_, State) ->
     {ok, State}.
