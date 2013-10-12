@@ -21,6 +21,7 @@
 %% @doc Starts the server
 -spec start_link() -> {ok, pid()}.
 start_link() ->
+    lager:info("Hey, this is starting!!"),
     gen_server:start_link({local, ?SERVER}, ?IMPLEMENTATION_MODULE, [], []).
 
 %%%===================================================================
