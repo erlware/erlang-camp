@@ -70,6 +70,7 @@ stop() ->
 %%--------------------------------------------------------------------
 handle_call({lookup, Key}, _From, State) ->
     Reply = proplists:get_value(Key, State),
+    lager:info("A search on Key ~p return value ~p.", [Key, Reply]),
     {reply, Reply, State};
 
 handle_call(_Request, _From, State) ->
@@ -89,6 +90,7 @@ handle_call(_Request, _From, State) ->
 %%--------------------------------------------------------------------
 handle_cast({insert, {Key, Value}} = _KV, State) ->
     NewState = [{Key, Value}|State],
+    lager:info("Added ~p to the data store.", [{Key, Value}]),
     {noreply, NewState};
 
 handle_cast(stop, State) ->

@@ -27,9 +27,12 @@ $ cd simple_cache
 $ ./rebar get-deps
 $ ./rebar compile
 $ erl -pa ebin -env ERL_LIBS deps
+> application:start(syntax_tools).
+> application:start(compiler).
+> application:start(goldrush).
 > application:start(lager).
 > application:start(simple_cache).
-> appmon:start().
+> observer:start().
 > sc_server:insert(jordan, wilberding).
 ok
 > sc_server:lookup(jordan).
