@@ -1,21 +1,28 @@
+Events and Logs tutorial
+========================
+
 Hey Erlangers!
 
-Youw will find complete versions of code for simple cache, as well as the entity manager in here. Details on each are below.
+You will find complete versions of code for simple cache, as well as
+the entity manager in here. Details on each are below.
 
-If you find any errors or have any suggestions, please e-mail us at organizers@erlangcamp.com
+If you find any errors or have any suggestions, please e-mail us
+at organizers@erlangcamp.com
 
 Thanks!
 
-******************
-** simple_cache **
-******************
 
-This version of simple_cache includes the supervisor, application, and also has lager (logging) added to it. You will remember the lager dependency was added by first adding a rebar.config
+## simple_cache
+
+This version of `simple_cache` includes the supervisor, application, and
+also has lager (logging) added to it. You will remember the lager
+dependency was added by first adding a `rebar.config`
 
 Here are the steps on the command line to get the code up and running.
 
-(assuming you are in the events_and_logs directory)
+(assuming you are in the `events_and_logs` directory)
 
+```
 $ cd simple_cache
 $ ./rebar get-deps
 $ ./rebar compile
@@ -37,26 +44,31 @@ wilberding
 ok
 > sc_server:lookup(jordan).
 wilberding
+```
 
-Feel free to add your own logging calls to lager elsewhere and whatever else you want, have some fun! Also, take a look at the logs directory creating by lager to see what interesting things go there.
+Feel free to add your own logging calls to lager elsewhere and
+whatever else you want, have some fun! Also, take a look at the logs
+directory created by lager to see what interesting things go there.
 
 
+## entity_manager
 
-********************
-** entity_manager **
-********************
+This is a simple example of utilizing the `gen_event` framework to
+create an Entity Manager.
 
-This is a simple example of utilizing the gen_event framework to create an Entity Manager.
-
-I have created a code to drive the entity manager in em_demo.erl, but you can take those commands and type them yourself directly into the shell if you wanted to.
+I have created a code to drive the entity manager in `em_demo.erl`, but
+you can take those commands and type them yourself directly into the
+shell if you wanted to.
 
 To run the code, doing the following.
 
-(assuming you are in the events_and_logs directory)
+(assuming you are in the `events_and_logs` directory)
 
+```
 $ cd entity_manager
 $ erlc *.erl
 $ erl
 > em_demo:go().
+```
 
 Again, please freel free to play around!
